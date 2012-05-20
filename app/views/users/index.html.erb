@@ -1,0 +1,56 @@
+ 
+        <center>
+<div class="profile1 ">
+	
+	<div id="e">
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+ 
+    <td class="main"> <% if signed_in? %><% if admin_check? %>
+  <%= link_to "New User ",new_user_path%><% end %> <% end %>
+    
+    </td>
+
+      
+
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+                <%= will_paginate  :class=>"apple_pagination",:previous_label=>"",:next_label=>""%>
+
+        <table class="microposts" summary="User microposts">         	  <% @users.each do |user| %>
+
+        	<tr>
+       
+   
+  <td class="micropost">
+<span class="content o" style="text-align: right;"><h5 style="width: 500px;"><%= link_to user.name, user %></h5></span> 
+<span class="content microposts" style="text-align: right;">العضوية : <%=  user.id %></span> 
+<span class="content microposts" style="text-align: right;">الرسائل : <%= link_to user.microposts.count, user_microposts_path(user) %></span> 
+<spanclass="content microposts" style="text-align: right;">  <% if admin_check? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete, 
+                                  confirm: "You sure?" %>
+                                  <% if admin_check?  %>
+                                    | <%= link_to "New", new_user_micropost_path(user), 
+                                  confirm: "You sure?" %>
+  <% end %>
+  <% end %></span> 
+ <span class="timestamp">
+       <%= time_ago_in_words(user.created_at) %>  << <%= user.created_at %>
+    </span>
+ 
+  </td>
+   
+    	<td class="gravatar">
+   		
+		        <%= link_to gravatar_for(user), user  %><br />
+  </td>
+  </tr> <% end %>
+  
+        </table>              
+         <%= will_paginate  :class=>"apple_pagination",:previous_label=>"",:next_label=>""%>
+
+    </td>
+</table>
+

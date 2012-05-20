@@ -1,0 +1,15 @@
+common: &common
+  access_key_id: AKIAIDW6CQ3PNYUFWDNA
+  secret_access_key: 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
+
+development:
+  <<: *common
+  bucket: app-name-development
+
+test:
+  <<: *common
+  bucket: app-name-test
+
+production:
+  <<: *common
+  bucket: app-name-production

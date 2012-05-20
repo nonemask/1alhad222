@@ -1,0 +1,24 @@
+ 
+ <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><p class="o1">أهلاً بك اخي العزيز تمت العملية  بنجاح</p> </div>
+        <% end %>
+        <center>
+<% if signed_in? %>
+ 
+       <div class="row">
+       	  <aside>
+    	<%= gravatar_for @user %>
+          
+       <% if admin_check?   %>
+	<%= link_to "تحديث بيانات العضو", edit_user_path(@user) %>
+	<% end %>
+     
+    
+      <%= @user.name %><strong> : الاسم</strong> <br />
+   <strong>  عدد الرسائل : <%= @user.microposts.count %> </strong> <br />
+   </aside>
+</div>
+<br />
+<br />
+<br />
+<% end %>

@@ -1,0 +1,49 @@
+
+ <% if signed_in? %>
+ 
+        <center>
+<div class="profile1 ">
+	
+	
+<table class=" " summary="Profile information">
+  <tr>
+    <td class="main">
+   
+
+      <% unless @user.microposts.empty? %>
+        <table class="microposts" summary="User microposts">
+        	
+          <%= render @microposts %>
+        </table>
+        <%= will_paginate @microposts ,:class=>"apple_pagination",:previous_label=>"",:next_label=>""%>
+      <% end %>
+    </td>
+  <td> <table class="front" summary="For signed-in users">
+  	
+    	<div class="ds">
+    <tr>
+      <td class="main">
+  
+<%= form_for [@user,@micropost] do |f| %>
+  <div class="field">
+<%= f.hidden_field :name , :size=>"46" ,:value=>current_user.name%>
+  </div>
+  <div class="field">
+    <%= f.text_area :content , :size=>"11*11"%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Send",:class=>"btn btn-large"%>
+  </div>
+<% end %><% end %>
+      </td>
+    </tr>
+    <tr>
+ <td class="profile1 pull-right">   <%= @user.name %><strong> : الاسم</strong> <br />
+   <strong>  عدد الرسائل : <%= @user.microposts.count %> </strong> <br />
+
+	<%= link_to "تحديـث بيانـاتك", edit_user_path(@user) %>
+	</td></tr>
+  
+   </div>
+  </table></td>
+</table></div>

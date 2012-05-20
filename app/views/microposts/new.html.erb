@@ -1,0 +1,30 @@
+
+        <center>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+      	<% if @micropost.errors.any? %>
+  <div id="error_explanation">
+    
+    <b>تاكد اخي العزيز من الاخطاء التالية</b>
+    <ul>  
+      <li> فارغ، يرجى ملء احد الحقول -</li>
+    </ul>
+  </div>
+<% end %>
+<%= form_for [@user,@micropost] do |f| %>
+  <div class="field">
+<%= f.hidden_field :name , :size=>"46" ,:value=>current_user.name%>
+  </div>
+  <div class="field">
+    <%= f.text_area :content , :size=>"46*44"%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" ,:class=>"btn btn-large btn-primary"%>
+  </div>
+<% end %><% end %>
+      </td>
+ 
+    </tr>
+  </table>

@@ -1,0 +1,31 @@
+
+ 
+<tr>
+	<%
+	 @avatar=User.find_by_name(micropost.name)|| nil
+	  %>
+	
+  <td class="">
+  	    <span class="content " style="text-align: right;"><%= strip_tags(wrap(micropost.name)) %></span>
+
+    <span class="content microposts" style="text-align: right;"><%= strip_tags(wrap(micropost.content)) %></span>
+    <span class="timestamp " style="text-align: right;">
+           	<p style="text-align: right;font-size: 12px;width: 400px;" class=""><%= %> <span style="float: left;"><%= micropost.created_at %></span> </p>
+           	
+ <% if signed_in? %>
+    <% if admin_check? || !current_user?(@user) %>
+    | <%= link_to "حذف ", [@avatar ,micropost], method: :delete, 
+                                  confirm: "You sure?" %>
+                                    
+  <% end %>
+    <% if admin_check? || !current_user?(@user) %>
+                                    | <%= link_to "ارسال ", new_user_micropost_path(@avatar), 
+                                  confirm: "You sure?" %></span>
+  <% end %>
+  <%end%>
+
+  </td>
+  <td class="gravatar">
+		        <%= link_to gravatar_for(@avatar), @avatar  %>
+  </td>
+</tr>

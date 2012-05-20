@@ -1,0 +1,35 @@
+<table class="profile">
+  <tr>
+   
+    <td class="sidebar1 round">
+     <strong>  </strong>
+     
+    </td>
+  </tr>
+</table><br /><br />
+<center>
+<%= form_for  @sound,:html => { :multipart => true } do |f| %>
+  <div class="field">
+    <%= f.label :name, "اسم الشريط" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  
+ 
+  <div class="actions">
+    <%= f.submit "اضـافة" %>
+  </div>
+  <br />  <br />
+<% end %>
+
+<% if @sound.errors.any? %>
+  <div id="error_explanation">
+    
+    <b>تاكد اخي العزيز من الاخطاء التالية</b>
+    <ul>
+   
+      <li> فارغ، يرجى ملء احد الحقول -</li>
+ 
+    </ul>
+  </div>
+<% end %>

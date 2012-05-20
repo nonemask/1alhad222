@@ -1,0 +1,38 @@
+<table class="profile">
+  <tr>
+   
+    <td class="sidebar1 round">
+     <strong>  </strong>
+     
+    </td>
+  </tr>
+</table><br /><br />
+<center>
+<%= form_for  [@sound,@album],:html => { :multipart => true } do |f| %>
+  <div class="field">
+    <%= f.label :name, "اسم الانشودة" %><br />
+    <%= f.text_field :name %>
+  </div>
+ <%= f.fields_for :asetts do |aset_fields|%>
+  <div class="field">
+  <%= aset_fields.file_field :music%>
+  <% end %>
+  
+  </div>
+  <div class="actions">
+    <%= f.submit "اضـافة" %>
+  </div>
+  <br />  <br />
+<% end %>
+
+<% if @album.errors.any? %>
+  <div id="error_explanation">
+    
+    <b>تاكد اخي العزيز من الاخطاء التالية</b>
+    <ul>
+   
+      <li> فارغ، يرجى ملء احد الحقول -</li>
+ 
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+ 
+        <center>
+<div class="profile1 " style="margin: 0px auto;">
+	
+	<div id="" class=""style="margin: 0px auto;>
+<table class="profile microposts" summary="Profile information" style="width: 500px;margin: 0px auto;">
+  <tr>
+    <td class="" style="width: 500px;margin: 0px auto; float: right;">
+
+
+<%= form_for(:session, url: sessions_path) do |f| %>
+  <div class="field"style="width: 500px;margin: 0px auto;">
+    <%= f.label :email ,"",:class=>"btn btn-large" %><br />
+    <%= f.text_field :email ,:class=>"text1"%>
+  </div>
+  <div class="field"style="width: 500px;margin: 0px auto;">
+    <%= f.label :password ,"",:class=>"btn btn-large " %><br />
+    <%= f.password_field :password ,:class=>"text1"%>
+  </div>
+  <div class="actions"style="width: 500px;margin: 0px auto;">
+    <%= f.submit "Login",:class=>"btn btn-large " %>
+  </div>
+<% end %>
+
+    </td>
+</table>
+</div></div>

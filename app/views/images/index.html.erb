@@ -1,0 +1,49 @@
+<table class="profile">
+  <tr>
+   
+    <td class="sidebar1 round">
+     <strong>    <%= link_to "اضافة شريط",new_sound_path%>
+</strong>
+     
+    </td>
+  </tr>
+</table><br /><br />
+
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+                
+        <table class="microposts" summary="User microposts">         	  <% @sound.each do |sound| %>
+
+        	<tr>
+  <td class="micropost">
+<span class="content"><h5><%= link_to sound.name, sound %></h5></span> 
+<span class="content"> <%=  sound.content %></span> <br />
+
+ <span class="timestamp">
+      Posted <%= time_ago_in_words(sound.created_at) %> ago.||<%= sound.created_at %>
+    </span>
+ <span class="content">  
+ 	      <% if signed_in? %>
+
+ 	<% if admin_check? %>
+    | <%= link_to "delete", sound , method: :delete, 
+                                  confirm: "You sure?" %>
+                                  <% if admin_check?  %>
+                                    | <%= link_to "Edit", edit_studioname_path(sound), 
+                                  confirm: "You sure?" %>
+  <% end %> <% end %>
+  <% end %></span> 
+  </td>
+   
+    	<td class="gravatar">
+    		
+   		<br />
+  </td><% end %>
+  </tr> 
+  
+        </table>                <%= will_paginate @sound %>
+
+    </td>
+  
+</table>

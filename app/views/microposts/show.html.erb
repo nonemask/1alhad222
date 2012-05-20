@@ -1,0 +1,31 @@
+ 
+        <center>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+   
+        <h1 class="micropost">What's up?</h1>
+      </td>
+ 
+    </tr>
+  </table>
+        <table class="profile">
+  <tr>
+    <td class="main">
+      <h3>
+       <% if admin_check?   %>
+	<%= link_to "تحديث بيانات العضو", edit_user_path(@user) %>
+	<% end %>
+      </h3>
+    </td>
+    <td class="sidebar round">
+      <%= @user.name %><strong> : الاسم</strong> <br />
+   <strong>  عدد الرسائل : <%= @user.microposts.count %> </strong> <br />
+    </td>
+  </tr>
+</table>
+<br />
+<br />
+<br />
+<% end %>

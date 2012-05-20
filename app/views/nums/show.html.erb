@@ -1,0 +1,85 @@
+ 
+ <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><p class="o1">أهلاً بك اخي العزيز تمت العملية  بنجاح</p> </div>
+        <% end %>
+        <center>
+
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+         </td>
+ 
+    </tr>
+  </table>
+        <table class="profile">
+  <tr>
+    <td class="main"> <% if signed_in? %><% if admin_check? %>
+  <%= link_to "تعديل صوت",edit_sound_list_path(@sound)%><% end %> <% end %>
+    
+    </td>
+    <td class="sidebar round" style="width: 140%;">
+      <%= @sound.name %><strong> : الاسم</strong> <br />
+   <strong> الوصف :</strong>  <%= @sound.content %> <br />
+    </td>
+      	<td class="gravatar">
+    		<% for aset in  @sound.asets%>
+    		<%= link_to image_tag(aset.image.url(:thumb)),"#"%>
+    		
+    		<% end %>
+   		<br />
+  </td>
+  </tr>
+</table>
+<br />
+<br />
+<br />
+
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+                
+        <table class="microposts" summary="User microposts">  
+
+        	<tr>
+       
+   
+  <td class="micropost">
+<span class="content" style="text-align: center;">
+	<table>
+		<tr>
+			<td>name</td>
+		<td><%= link_to @album.name, [@sound,@album]%></td>	
+		</tr>
+		<tr>
+			<td>
+				created_at
+			</td>
+			<td>
+				<%=  @album.created_at%>
+				</td>
+			</tr>
+			<tr>
+				<td><% for aset in  @album.asetts %>
+    		
+    		 <embed height="40px" src="<%= aset.music.url  %>"></embed> 
+    	
+    		<% end %></td>
+			</tr>
+		</table>
+	
+	
+</span> 
+    		
+    		
+    		
+    		
+    	<br />
+
+  </td>
+  </td>
+  </tr> 
+   <%= will_paginate @sound1 %>
+        </table>               
+    </td>
+  </tr>
+ </table>

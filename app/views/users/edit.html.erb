@@ -1,0 +1,57 @@
+ 
+        <center>
+<div class="profile1 " style="margin: 0px auto;">
+	
+	<div id="e" class="micropost"style="width: 500px;margin: 0px auto;>
+<table class="profile microposts" summary="Profile information" style="width: 500px;margin: 0px auto;">
+  <tr>
+    <td class="micropost" style="width: 500px;margin: 0px auto; float: right;">
+
+<center>
+	<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+    <b>تاكد اخي العزيز من الاخطاء التالية</b>
+    </div>
+    <ul>
+   <li>الاسم  مكرر -</li>
+      <li> فارغ، يرجى ملء احد الحقول -</li>
+      <li>الايميل غير صحيح او مكرر -</li>
+      <li> كلمة المرور لا توافق الاعادة -</li>
+      <li> كلمة المرور ليست بين 6 الى 40 حرف  -</li>
+ <br />
+    </ul>
+  </div>
+<% end %>
+<div class="microposts"style="height: 100px;width: 80px;"> 
+	<span><%= gravatar_for(@user) %></span> 
+  <%= link_to "تعديل الصورة","http://ar.gravatar.com/emails",:class=>"btn btn-large "%>
+</div>
+
+<br /><br />
+
+<br />
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :name, "الاسم",class:"btn btn-large" %><br />
+    <%= f.text_field :name ,class:"text1"%>
+  </div>
+  <div class="field">
+    <%= f.label :email, "الايميل" ,class:"btn btn-large" %><br />
+    <%= f.text_field :email,class:"text1" %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "كلمة المرور" ,class:"btn btn-large" %><br />
+    <%= f.password_field :password ,class:"text1"%>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "اعد كلمة المرور" ,class:"btn btn-large" %><br />
+    <%= f.password_field :password_confirmation,class:"text1" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "تحديث",:class=>"btn btn-large btn-primary"%>
+  </div>
+<% end %>
+    </td>
+</table>
+</div></div>

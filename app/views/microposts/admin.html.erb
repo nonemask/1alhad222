@@ -1,0 +1,23 @@
+ 
+        <center>
+<div class="profile1 ">
+	
+	<div id="e">
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+
+
+      <% unless @user.microposts.empty? %>
+                              <%= will_paginate @microposts ,:class=>"apple_pagination",:previous_label=>"",:next_label=>""%>
+
+        <table class="microposts" summary="User microposts">
+          <%= render @microposts %>
+        </table>
+
+      <% end %>        <%= will_paginate @microposts ,:class=>"apple_pagination",:previous_label=>"",:next_label=>""%>
+
+
+    </td>
+</table>
+</div></div>

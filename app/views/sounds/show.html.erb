@@ -1,0 +1,81 @@
+ <div id="best">
+        <center>
+
+   <div class="holder_content">
+ 
+       <section class="group7">
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+         </td>
+ 
+    <td class="main"> <% if signed_in? %><% if admin_check? %>
+  <%= link_to "New ",new_sound_list_path(@sound)%><% end %> <% end %>
+    
+    </td>
+    </tr>
+  </table>
+        <table class="o"style="text-align: center;width: 430px; color:#A9E7FF">
+  <tr>
+    <td class="sidebar round">
+      <%= @sound.name %> <br />
+    </td>
+    
+  </tr>
+</table>
+
+
+<table class="profile" summary="Profile information">
+  <tr>
+  	 
+
+    <td class="main">
+    	                 <%= will_paginate @sound1 , :class=>"apple_pagination" ,:previous_label=>"",:next_label=>""%>
+
+        <table class="microposts" summary="User microposts"style="text-align: center;width: 430px; color:black;"> 
+        	 <% @sound1.each do |sound| %>
+        	<tr>
+        		
+  <td class="micropost">
+<span class="content"><p style="color:black;"><%= raw sound.name%></p></span> 
+  <% if signed_in? %><% if admin_check? %>
+<span class="content">   
+    | <%= link_to "delete", [@sound,sound], method: :delete, 
+                                  confirm: "You sure?" %>
+                                  <% if admin_check?  %>
+                                    | <%= link_to "Edit", edit_sound_list_path(@sound,sound), 
+                                  confirm: "You sure?" %>
+  <% end %> <% end %>
+  <% end %></span> 
+  </td>
+  </td><% end %>
+  </tr> 
+        </table>               
+    </td>
+  </tr>    
+
+ </table>
+ <br />
+  </div>
+ </section>  
+   <section class="group6">
+   	
+   	  <%= image_tag("#", :class=>"o")%>
+ 
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+	</section>
+	
+	</div>

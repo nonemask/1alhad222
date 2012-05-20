@@ -1,0 +1,84 @@
+
+	<div class="">
+<center>
+   <div class="holder_content1">
+		<section>
+
+	</section>
+	
+
+		</div>
+		
+   <div class="holder_content">
+ 
+       <section class="group7">
+       	<h3></h3>
+       	<br />
+ <% if signed_in? %>
+    <% if admin_check? %>
+   <table class="profile1">
+  <tr>
+   
+    <td class=" round" >
+     <strong>    <%= link_to "Add ",new_sound_path%>
+</strong>
+     
+    </td>
+  </tr>
+</table>
+<% end %>
+
+<% end %>
+<table class="" summary="Profile information">
+  <tr>
+    <td >
+                 <%= will_paginate @sound ,:class=>"apple_pagination",:previous_label=>"",:next_label=>""%>
+
+        <table class="front" summary="User microposts" style="text-align: center;width: 460px; color:green">  <% @sound.each do |sound| %>
+
+        	<tr>
+  <td class="content"style="text-align: right;font-size: 12px;width: 450px;color: black;" class="microposts">
+<span class="content"><p class="microposts"style="text-align: center;color: black;"><%= link_to sound.name, sound %></p></span> 
+<span class="content"><p style="text-align: right;font-size: 12px;color: black;" class="microposts"> <%=  sound.content %><></span> <br />
+
+ <span class="timestamp">
+ 	
+           	<p style="text-align: right;font-size: 12px;" class=""> <span style="float: left;color: black;"><%= sound.created_at %></span> </p>
+
+    </span>
+ <span class="content">  
+ 	      <% if signed_in? %>
+
+ 	<% if admin_check? %>
+    | <%= link_to "delete", sound , method: :delete, 
+                                  confirm: "You sure?" %>
+                                  <% if admin_check?  %>
+                                    | <%= link_to "Edit", edit_sound_path(sound), 
+                                  confirm: "You sure?" %>
+  <% end %> <% end %>
+  <% end %></span> 
+  </td>
+   
+    	<td class="gravatar" style="opacity: 0.9;">
+    	
+   		<br />
+  </td><% end %>
+  </tr> 
+        </table>              
+    </td>
+  
+</table>
+
+   	</section>  
+
+
+  
+   </div>
+
+   <!--end holder-->
+</center>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+<br /><br /><br /><br /><br /><br /><br /><br /></p>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
